@@ -2,7 +2,12 @@ namespace list_box
 {
     public partial class Form1 : Form
     {
+
+        // variabili globali
         List<string> origineDati = new List<string>();
+        string nomeFile;
+
+
         public Form1()
         {
             InitializeComponent();
@@ -138,12 +143,29 @@ namespace list_box
         // button salva
         private void buttonSalva_Click(object sender, EventArgs e)
         {
-            using (StreamWriter sw = new StreamWriter("animali.txt"))
+            using (StreamWriter sw = new StreamWriter(nomeFile))
             {
-                foreach(string s in origineDati)
+                foreach (string s in origineDati)
                 {
                     sw.WriteLine(s);
                 }
+            }
+        }
+
+        // button file
+        private void buttonFile_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                nomeFile = ofd.FileName;
+                caricaDati(nomeFile);
+                aggiorna();
+            }
+            else
+            {
+                MessageBox.Show("errore, nessun file selezionato");
             }
         }
     }

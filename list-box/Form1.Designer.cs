@@ -38,6 +38,7 @@
             lblMod = new Label();
             lblLista = new Label();
             buttonSalva = new Button();
+            buttonFile = new Button();
             SuspendLayout();
             // 
             // listBoxAnimali
@@ -133,11 +134,22 @@
             buttonSalva.UseVisualStyleBackColor = true;
             buttonSalva.Click += buttonSalva_Click;
             // 
+            // buttonFile
+            // 
+            buttonFile.Location = new Point(519, 108);
+            buttonFile.Name = "buttonFile";
+            buttonFile.Size = new Size(127, 39);
+            buttonFile.TabIndex = 12;
+            buttonFile.Text = "carica file";
+            buttonFile.UseVisualStyleBackColor = true;
+            buttonFile.Click += buttonFile_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(buttonFile);
             Controls.Add(buttonSalva);
             Controls.Add(lblLista);
             Controls.Add(txtMod);
@@ -166,5 +178,6 @@
         private Label lblMod;
         private Label lblLista;
         private Button buttonSalva;
+        private Button buttonFile;
     }
 }
