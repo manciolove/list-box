@@ -37,6 +37,7 @@
             txtMod = new TextBox();
             lblMod = new Label();
             lblLista = new Label();
+            buttonSalva = new Button();
             SuspendLayout();
             // 
             // listBoxAnimali
@@ -77,6 +78,7 @@
             buttonMod.TabIndex = 3;
             buttonMod.Text = "modifica";
             buttonMod.UseVisualStyleBackColor = true;
+            buttonMod.Click += buttonMod_Click;
             // 
             // lblAgg
             // 
@@ -101,6 +103,7 @@
             txtMod.Name = "txtMod";
             txtMod.Size = new Size(100, 23);
             txtMod.TabIndex = 9;
+            txtMod.TextChanged += txtMod_TextChanged;
             // 
             // lblMod
             // 
@@ -120,11 +123,22 @@
             lblLista.TabIndex = 10;
             lblLista.Text = "lista elementi";
             // 
+            // buttonSalva
+            // 
+            buttonSalva.Location = new Point(173, 322);
+            buttonSalva.Name = "buttonSalva";
+            buttonSalva.Size = new Size(89, 42);
+            buttonSalva.TabIndex = 11;
+            buttonSalva.Text = "salva";
+            buttonSalva.UseVisualStyleBackColor = true;
+            buttonSalva.Click += buttonSalva_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(buttonSalva);
             Controls.Add(lblLista);
             Controls.Add(txtMod);
             Controls.Add(lblMod);
@@ -151,5 +165,6 @@
         private TextBox txtMod;
         private Label lblMod;
         private Label lblLista;
+        private Button buttonSalva;
     }
 }

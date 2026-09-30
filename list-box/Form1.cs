@@ -10,7 +10,8 @@ namespace list_box
             aggiorna();
         }
 
-        private void caricaDati (string nomeFile)
+        // carica dati
+        private void caricaDati(string nomeFile)
         {
             if (!File.Exists(nomeFile))
             {
@@ -39,9 +40,16 @@ namespace list_box
 
         }
 
+        // button rimozione
         private void buttonRim_Click(object sender, EventArgs e)
         {
+            int indice = listBoxAnimali.SelectedIndex;
 
+            if (indice != -1)
+            {
+                origineDati.RemoveAt(indice);
+                aggiorna();
+            }
         }
 
 
@@ -50,6 +58,7 @@ namespace list_box
 
         }
 
+        // button aggiunta
         private void buttonAgg_Click(object sender, EventArgs e)
         {
             if (ControlloStringa(txtAgg.Text) == false)
@@ -68,6 +77,7 @@ namespace list_box
             }
         }
 
+        // aggiorna
         private void aggiorna()
         {
             listBoxAnimali.Items.Clear();
@@ -77,6 +87,7 @@ namespace list_box
             }
         }
 
+        // controllo stringa
         private bool ControlloStringa(string x)
         {
             if (x == null)
@@ -93,13 +104,47 @@ namespace list_box
                 {
                     return true;
                 }
-            }  
+            }
             return false;
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        // button modifica
+        private void buttonMod_Click(object sender, EventArgs e)
+        {
+            int indice = listBoxAnimali.SelectedIndex;
+
+            if (indice != -1)
+            {
+                origineDati[indice] = txtMod.Text;
+                aggiorna();
+            }
+            else
+            {
+                MessageBox.Show("impossibile modificare");
+            }
+        }
+
+        // text box modifica
+        private void txtMod_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        // button salva
+        private void buttonSalva_Click(object sender, EventArgs e)
+        {
+            using (StreamWriter sw = new StreamWriter("animali.txt"))
+            {
+                foreach(string s in origineDati)
+                {
+                    sw.WriteLine(s);
+                }
+            }
         }
     }
 }
